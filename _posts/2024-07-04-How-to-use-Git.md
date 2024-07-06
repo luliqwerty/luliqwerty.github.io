@@ -10,7 +10,7 @@ tags: Git
 
 > 将新建的本地仓库上传到 GitHub 涉及几个步骤，包括在 GitHub 上创建新的空仓库，然后将本地仓库推送到这个新创建的远程仓库。以下是详细的步骤：
 
-### 1: 创建本地仓库
+### 步骤1: 创建本地仓库
 
 1. 打开终端。
 2. 导航到你想要创建新仓库的目录：
@@ -64,47 +64,14 @@ tags: Git
 
     如果你使用的是其他分支而不是 `master`，将 `master` 替换为你的分支名称。
 
-### 总结
-
-以下是完整的步骤：
-
-1. **初始化本地仓库**：
-
-    ```bash
-    cd path/to/your/project
-    git init
-    git add .
-    git commit -m "Commit information"
-    ```
-
-2. **创建 GitHub 仓库**：
-    
-    - 登录 GitHub。
-    - 点击 `+` 按钮，选择 `New repository`。
-- 填写仓库名称和描述，点击 `Create repository`。
-    
-3. **连接到远程仓库**：
-
-    ```bash
-    git remote add origin https://github.com/luliqwerty/my-repo.git
-    ```
-
-4. **推送到 GitHub**：
-
-    ```bash
-    git push -u origin master
-    ```
-
-这样，你的新建仓库就成功地上传到 GitHub 了。
-
 ## 查看本地仓库关联的远端仓库
 
 > 如果你已经克隆了仓库到本地，可以使用 Git 命令查看文件所属的仓库信息。
 
 1. **打开终端**：
-    
+   
 - 导航到包含你感兴趣文件的本地仓库目录。
-    
+  
 2. **查看当前仓库的远程地址**：
     - 使用以下命令查看当前仓库的远程 URL：
 
@@ -584,3 +551,56 @@ git remote set-url origin <url>
 git remote -v
 ```
 
+在 Git 中创建 Pull Request (PR) 是一种提交代码更改到上游仓库的标准方法，尤其是当你没有直接的写权限时。以下是一个详细的步骤，教你如何通过 GitHub 创建 Pull Request：
+
+## how to pull request
+
+### 1. Fork 仓库
+
+在你想贡献代码的仓库页面，点击右上角的 **“Fork”** 按钮。这会将该仓库的一个副本复制到你的 GitHub 账户下。
+
+### 2. 克隆你的 Fork 仓库
+
+将你 Fork 的仓库克隆到本地机器：
+
+```bash
+git clone https://github.com/your-username/forked-repository.git
+cd forked-repository
+```
+
+### 3. 创建一个新分支
+
+在进行更改之前，创建一个新的分支来进行你的开发工作：
+
+```bash
+git checkout -b my-feature-branch
+```
+
+### 4. 进行更改并提交
+
+在新分支上进行你的更改。完成后，提交你的更改：
+
+```bash
+git add .
+git commit -m "描述你的更改内容"
+```
+
+### 5. 推送更改到你的 Fork
+
+将你的更改推送到你 Fork 的仓库：
+
+```bash
+git push origin my-feature-branch
+```
+
+### 6. 在 GitHub 上创建 Pull Request
+
+1. 访问你的 Fork 仓库页面（例如 `https://github.com/your-username/forked-repository`）。
+2. 你会看到一个关于你刚刚推送的分支的通知，点击 **“Compare & pull request”** 按钮。
+3. 填写 Pull Request 的标题和描述，确保详细说明你的更改。
+4. 选择要合并到的上游仓库和分支（通常是 `main` 或 `master`）。
+5. 点击 **“Create pull request”** 按钮。
+
+### 7. 等待审查和反馈
+
+你的 Pull Request 现在已提交。上游仓库的维护者会审查你的更改，并可能提供反馈或直接合并你的代码。通过这些步骤，你可以成功地在 GitHub 上创建一个 Pull Request，将你的代码更改提交到上游仓库。记住，要仔细填写 PR 的标题和描述，以便审查者能够理解你的更改内容。
