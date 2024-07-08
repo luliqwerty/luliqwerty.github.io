@@ -2,7 +2,6 @@
 layout: post
 title: How to use Git
 date: 2024-07-04
-description: this is a blog to record how to use Git.
 tags: Git
 ---
 
