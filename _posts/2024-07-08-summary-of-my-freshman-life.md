@@ -2,7 +2,7 @@
 layout: post
 title: summary of my freshman life
 date: 2024-07-08
-tags:college life
+tags: college life
 ---
 
 ## 大一我是怎么度过的
