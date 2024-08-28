@@ -70,8 +70,8 @@ show_count: false
 recent_posts_limits: 5
 
 social:
-  email: hluli182@gmail.com
   github: https://github.com/luliqwerty
+  email: hluli182@gmail.com
   # google: https://plus.google.com/yourname
   # twitter: https://twitter.com/yourname
   # facebook: https://www.facebook.com/yourname
