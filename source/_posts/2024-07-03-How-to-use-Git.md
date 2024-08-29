@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to use Git
-date: 2024-07-04
+date: 2024-07-03
 tags: Git
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: My first blog
-date: 2024-06-29
+date: 2024-06-28
 tags: 杂谈
 ---
 

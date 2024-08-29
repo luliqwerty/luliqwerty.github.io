@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Summary of my freshman life
-date: 2024-07-08
+date: 2024-07-07
 tags: 沉思录
 ---
 
