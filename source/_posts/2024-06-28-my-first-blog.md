@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 博客介绍
+title: My first blog
 date: 2024-06-28
 tags: 杂谈
 ---

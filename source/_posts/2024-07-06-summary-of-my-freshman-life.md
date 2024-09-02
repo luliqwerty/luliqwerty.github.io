@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 大一生活的总结
-date: 2024-07-07
+title: Summary of my freshman life
+date: 2024-07-06
 tags: 沉思录
 ---
 
