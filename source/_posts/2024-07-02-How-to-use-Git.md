@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to use Git
+title: Git的使用
 date: 2024-07-03
 tags: Git
 ---
