@@ -154,7 +154,7 @@ tags: Git
 
 ### **This is a good strategy to organize git branches:**
 
-![Github Flow](/images/postImgs/HowToUseGit.png)
+[![Github Flow](https://i.postimg.cc/HLq0YYQW/How-To-Use-Git.png)](https://postimg.cc/WD7qSPWx)
 
 ### 3. 试验和回滚
 
