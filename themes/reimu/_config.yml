@@ -204,7 +204,7 @@ algolia_search:
 #   field: post
 #   content: true
 generator_search:
-  enable: true
+  enable: false
 
 preloader:
   enable: true
