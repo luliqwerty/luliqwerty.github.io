@@ -155,7 +155,7 @@ categories: Tech Learning
 
 ### **This is a good strategy to organize git branches:**
 
-[How-To-Use-Git.png](https://postimg.cc/WD7qSPWx)
+[![Github Flow](https://i.postimg.cc/HLq0YYQW/How-To-Use-Git.png)](https://postimg.cc/WD7qSPWx)
 
 ### 3. 试验和回滚
 
