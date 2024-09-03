@@ -2,7 +2,7 @@
 title: Dvorak键盘布局体验
 date: 2024-09-02
 tags: 奇技淫巧
-categories: 计科学习
+categories: TechLearning
 ---
 
 # Dvorak键盘布局

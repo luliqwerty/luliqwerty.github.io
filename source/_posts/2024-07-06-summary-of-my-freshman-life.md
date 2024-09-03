@@ -3,6 +3,7 @@ layout: post
 title: Summary of my freshman life
 date: 2024-07-06
 tags: 沉思录
+categories: Life
 ---
 
 ## 大一我是怎么度过的

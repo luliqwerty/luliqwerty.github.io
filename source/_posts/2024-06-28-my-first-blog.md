@@ -3,6 +3,7 @@ layout: post
 title: My first blog
 date: 2024-06-28
 tags: 杂谈
+categories: Life
 ---
 
 ## 这是我的第一篇博客
