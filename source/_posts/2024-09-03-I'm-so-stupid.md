@@ -3,7 +3,7 @@ title: 所谓的Google上网助手
 tags: 
     - 奇技淫巧
     - 沉思录
-categories: TechLearning
+categories: Tech Learning
 ---
 
 # 这篇博客是警告
@@ -24,7 +24,7 @@ categories: TechLearning
 > 
 > What I cannot create, I do not understand.
 >
-    > 凡是我不能创造的，我就还不理解。
+> 凡是我不能创造的，我就还不理解。
 >
 > Know how to solve every problem that has been solved. 
 > 
