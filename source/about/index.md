@@ -6,6 +6,6 @@
 
 ***附一张我的帅照***
 
-[![handsome-Man.jpg](https://i.postimg.cc/pThRNFyh/handsome-Man.jpg)](https://postimg.cc/jwbGPCHt)
+[handsome-Man.jpg](https://postimg.cc/jwbGPCHt)
 
 - 现在我什么技术都没有，不过我希望能在我的努力下成为大牛，满足我对技术的热爱。
