@@ -3,7 +3,7 @@ title: 所谓的Google上网助手
 tags: 
     - 奇技淫巧
     - 沉思录
-categories: Tech Learning
+categories: 学习
 ---
 
 # 这篇博客是警告

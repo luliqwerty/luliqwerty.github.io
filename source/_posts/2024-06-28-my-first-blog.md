@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My first blog
+title: hello
 date: 2024-06-28
 tags: 杂谈
 categories: Life

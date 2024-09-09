@@ -3,7 +3,7 @@ layout: post
 title: How to use Git
 date: 2024-07-02
 tags: Git
-categories: Tech Learning
+categories: 学习
 ---
 
 ## 本地仓库上传到远端仓库（repositories）

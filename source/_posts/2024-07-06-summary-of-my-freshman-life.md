@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Summary of my freshman life
+title: 对大一生活的总结
 date: 2024-07-06
 tags: 沉思录
 categories: Life
