@@ -10,101 +10,63 @@ categories: 学习
 
 > 将新建的本地仓库上传到 GitHub 涉及几个步骤，包括在 GitHub 上创建新的空仓库，然后将本地仓库推送到这个新创建的远程仓库。以下是详细的步骤：
 
-### 步骤1: 创建本地仓库
+```bash
+# 将本地文件夹添加到 git 管理
+git init
 
-1. 打开终端。
-2. 导航到你想要创建新仓库的目录：
+# 把本地仓库链接到 github
+git remote add origin https://github.com/luliqwerty/note.git
 
-    ```bash
-    cd path/to/your/project
-    ```
+# 把你的修改添加到 git 的工作树中
+git add yourChangedFile
 
-3. 初始化一个新的 Git 仓库：
+# -M：表示强制重命名分支。如果目标分支名称已经存在，会强制覆盖。
+git branch -M main
 
-    ```bash
-    git init
-    ```
+# commit 是用于保存更改的核心命令。
+# 它将工作目录中的修改（已添加到暂存区的文件 git add）保存到仓库的历史记录中
+# 生成一个唯一的快照（即提交记录）。
+git commit -m "first commit"
 
-4. 添加文件到仓库：
-
-    ```bash
-    git add .
-    ```
-
-5. 提交文件：
-
-    ```bash
-    git commit -m "Commit information"
-    ```
-
-### 步骤 2: 在 GitHub 上创建新仓库
-
-1. 打开浏览器并登录到 GitHub。
-2. 点击右上角的 `+` 按钮，然后选择 `New repository`。
-3. 填写仓库名称和描述，选择是否公开（Public）或私有（Private），然后点击 `Create repository`。
-
-### 步骤 3: 将本地仓库连接到 GitHub 仓库
-
-1. 在 GitHub 新仓库页面，你会看到一些提示，包括如何将本地仓库连接到这个新仓库。
-2. 在终端中，执行以下命令，将本地仓库连接到 GitHub 上的新仓库：
-
-    ```bash
-    git remote add origin https://github.com/luliqwerty/your-repo.git
-    ```
-
-    记得将 `yourusername` 替换为你的 GitHub 用户名，将 `your-repo` 替换为你新创建的仓库名称。
-
-### 步骤 4: 推送本地仓库到 GitHub
-
-1. 推送本地仓库的内容到 GitHub 仓库：
-
-    ```bash
-    git push -u origin master
-    ```
-
-    如果你使用的是其他分支而不是 `master`，将 `master` 替换为你的分支名称。
+# 将你的本地仓库上传到GitHub
+git push origin main
+```
 
 ## 查看本地仓库关联的远端仓库
 
 > 如果你已经克隆了仓库到本地，可以使用 Git 命令查看文件所属的仓库信息。
 
-1. **打开终端**：
-   
-- 导航到包含你感兴趣文件的本地仓库目录。
-  
-2. **查看当前仓库的远程地址**：
-    - 使用以下命令查看当前仓库的远程 URL：
+**查看当前仓库的远程地址**：
 
-    ```bash
-    git remote -v
-    ```
+使用以下命令查看当前仓库的远程 URL：
 
-    输出示例：
+```bash
+git remote -v
 
-    ```
-    origin  https://github.com/yourusername/your-repo.git (fetch)
-    origin  https://github.com/yourusername/your-repo.git (push)
-    ```
+# 输出如下：
+origin  https://github.com/yourusername/your-repo.git (fetch)
+origin  https://github.com/yourusername/your-repo.git (push)
+```
 
-    这会显示当前仓库的远程 URL，告诉你这个本地仓库关联的远程仓库。
+这会显示当前仓库的远程 URL，告诉你这个本地仓库关联的远程仓库。
 
-3. **查看当前分支**：
-    - 使用以下命令查看当前所在的分支：
+**查看当前分支**：
 
-    ```bash
-    git branch
-    ```
+```bash
+git branch
+```
 
-    当前分支会有一个星号 `*` 标识。
+当前分支会有一个星号 `*` 标识。
 
-4. **查看文件的提交历史**：
-    - 使用以下命令查看特定文件的提交历史，帮助你了解文件的修改和提交记录：
+**查看文件的提交历史**：
 
-    ```bash
-    git log -- path/to/your/file
-    ```
+使用这个命令可以查看特定文件的提交历史，帮助你了解文件的修改和提交记录：
 
-    这会显示指定文件的提交记录，包括每次修改的提交信息和提交者。
+```bash
+git log -- path/to/your/file
+```
+
+这会显示指定文件的提交记录，包括每次修改的提交信息和提交者。
 
 ## Git branch 的作用
 

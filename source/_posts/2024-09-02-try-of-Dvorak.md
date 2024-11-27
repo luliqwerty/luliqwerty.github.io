@@ -14,14 +14,10 @@ categories: 学习
 ## Dvorak键盘布局
 
 Dvorak键盘布局是一种键盘布局，由捷克作家和音乐家斯捷潘·德沃夏克（Stjepan M. Dvorak）在1890年代发明。这种布局的主要特点是，将字母e和t分别放在键盘的左上角，而将字母a和o分别放在键盘的右上角。这种布局的目的是为了提高打字速度和减少手指的移动距离。
+
 Dvorak键盘布局的布局如下：
 
-```
-` 1 2 3 4 5 6 7 8 9 0 - = 
-q w f p g j l u y ; ' [ ]
-a o e u i d h t n s - Enter
-z x c v b k m , . / Space
-```
+[![KB-United-States-Dvorak-svg.png](https://i.postimg.cc/TwR1Tdsv/KB-United-States-Dvorak-svg.png)](https://postimg.cc/HJhd2gH6)
 
 ## 使用Dvorak键盘布局的好处
 

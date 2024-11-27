@@ -1,6 +1,6 @@
 ---
 title: 和我一起写Makefile
-date: 2024-09-19 12:00:00
+date: 2024-09-19
 tags: [Makefile]
 categories: [学习]
 ---
