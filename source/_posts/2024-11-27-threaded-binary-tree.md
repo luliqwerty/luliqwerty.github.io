@@ -1,8 +1,9 @@
 ---
 title: 线索二叉树
-date: 2024-11-26
+date: 2024-11-27
 tags: [数据结构, 树]
 categories: 学习
+description: 线索二叉树
 ---
 # 线索二叉树
 

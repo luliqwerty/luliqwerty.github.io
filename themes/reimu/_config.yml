@@ -22,7 +22,7 @@ favicon: "/images/favicon.ico" # themes/reimu/source/images/favicon.ico
 # favicon: "https://example.com"
 avatar: "avatar.webp" # source/_data/avatar/avatar.webp
 
-
+category_dir: category
 # Content
 excerpt_link: Read More
 

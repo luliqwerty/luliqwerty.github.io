@@ -137,139 +137,68 @@ git log -- path/to/your/file
 
 使用 Git 分支的方法包括创建、切换、合并、删除分支以及处理冲突等操作。以下是一些详细的步骤和命令，帮助你有效地使用 Git 分支。
 
-### 1. 创建分支
-
-要创建一个新的分支，可以使用以下命令：
-
 ```bash
+1. 创建分支
 git branch <branch-name>
-```
 
-### 2. 切换分支
-
-要切换到已有的分支，可以使用以下命令：
-
-```bash
+2. 切换分支
 git checkout <branch-name>
-```
-
-或者直接创建并切换到一个新的分支：
-
-```bash
+# 创建分支并进入
 git checkout -b <branch-name>
-```
 
-### 3. 查看分支
-
-要查看所有分支，可以使用以下命令：
-
-```bash
+3. 查看分支
 git branch
-```
-
-要查看远程分支：
-
-```bash
-git branch -r
-```
-
-要查看本地和远程所有分支：
-
-```bash
 git branch -a
-```
+git branch -r
 
-### 4. 合并分支
-
-将一个分支的更改合并到当前分支。例如，将 `feature-xyz` 分支合并到当前分支（如 `master`）：
-
-```bash
+4. 合并分支
+# 将一个分支的更改合并到当前分支
+# 例如，将 `feature-xyz` 分支合并到当前分支 master
 git checkout master
 git merge feature-xyz
-```
 
-### 5. 删除分支
-
-删除本地分支：
-
-```bash
+5. 删除分支
 git branch -d <branch-name>
-```
+# 删除远程分支
+git push branch --delete <branch-name>
 
-删除远程分支：
+6. 解决合并冲突
+# 在合并过程中，可能会遇到冲突。
+# Git 会标记冲突的文件，你需要手动解决这些冲突。
 
-```bash
-git push origin --delete <branch-name>
-```
+	1. 打开冲突文件，Git 会标记冲突部分，例如：
 
-### 6. 解决合并冲突
+        <<<<<<< HEAD
+        This is content from the current branch.
+        =======
+        This is content from the branch being merged.
+        >>>>>>> feature-xyz
 
-在合并过程中，可能会遇到冲突。Git 会标记冲突的文件，你需要手动解决这些冲突。
+    2. 编辑文件，保留需要的更改，删除冲突标记。
 
-1. 打开冲突文件，Git 会标记冲突部分，例如：
+    3. 添加解决冲突的文件：
+        git add <file-name>
 
-    ```
-    <<<<<<< HEAD
-    This is content from the current branch.
-    =======
-    This is content from the branch being merged.
-    >>>>>>> feature-xyz
-    ```
-
-2. 编辑文件，保留需要的更改，删除冲突标记。
-
-3. 添加解决冲突的文件：
-
-    ```bash
-    git add <file-name>
-    ```
-
-4. 完成合并：
-
-    ```bash
-    git commit
-    ```
-
-### 7. 推送和拉取分支
-
-推送本地分支到远程：
-
-```bash
+    4. 完成合并：
+        git commit
+        
+7. 推送和拉取分支
+# 推送分支
 git push origin <branch-name>
-```
 
-拉取远程分支：
-
-```bash
+# 拉取远程分支
 git fetch origin
 git checkout -b <branch-name> origin/<branch-name>
-```
 
-### 8. 重命名分支
-
-重命名当前分支：
-
-```bash
+8. 重命名分支
+# 重命名当前分支
 git branch -m <new-branch-name>
-```
 
-重命名其他分支：
-
-```bash
+# 重命名其他分支
 git branch -m <old-branch-name> <new-branch-name>
-```
 
-### 9. 查看分支历史
-
-查看当前分支的提交历史：
-
-```bash
+9. 查看分支历史
 git log
-```
-
-查看特定分支的提交历史：
-
-```bash
 git log <branch-name>
 ```
 
