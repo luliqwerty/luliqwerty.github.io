@@ -1,8 +1,8 @@
 ---
 title: 根据遍历序列确定二叉树
 date: 2024-11-23
-tags: [数据结构, 树]
-categories: 学习
+tags: 树
+categories: 数据结构
 ---
 
 # 根据遍历序列确定二叉树

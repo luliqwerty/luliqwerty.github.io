@@ -2,8 +2,7 @@
 layout: post
 title: 对大一生活的总结
 date: 2024-07-06
-tags: 沉思录
-categories: Life
+categories: 沉思录
 ---
 
 ## 大一我是怎么度过的

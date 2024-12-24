@@ -1,8 +1,8 @@
 ---
 title: 二叉树
 date: 2024-11-18
-tags: [数据结构, 树]
-categories: 学习
+tags: 树
+categories: 数据结构
 ---
 
 # 二叉树

@@ -1,9 +1,8 @@
 ---
 layout: post
-title: hello
+title: 第一篇博客
 date: 2024-06-28
-tags: 杂谈
-categories: Life
+categories: 随笔
 ---
 
 ## 这是我的第一篇博客

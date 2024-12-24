@@ -1,8 +1,8 @@
 ---
 title: Dvorak键盘布局体验
 date: 2024-09-02
-tags: 奇技淫巧
-categories: 学习
+tags: 输入法
+categories: 奇技淫巧
 ---
 
 # Dvorak键盘布局

@@ -1,8 +1,8 @@
 ---
 title: 计算二叉树的叶子数
 date: 2024-11-26
-tags: [数据结构, 树]
-categories: 学习
+tags: 树
+categories: 数据结构
 ---
 # 计算二叉树的叶子数
 

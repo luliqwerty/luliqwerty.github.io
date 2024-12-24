@@ -1,8 +1,8 @@
 ---
 title: 树的层次遍历
 date: 2024-11-26
-tags: [数据结构, 树]
-categories: 学习
+tags: 树
+categories: 数据结构
 ---
 # 树的层次遍历
 

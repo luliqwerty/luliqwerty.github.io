@@ -1,8 +1,8 @@
 ---
 title: 哈夫曼树
 date: 2024-11-20
-tags: [数据结构, 树]
-categories: 学习
+tags: 树
+categories: 数据结构
 ---
 # 哈夫曼树的构造
 
