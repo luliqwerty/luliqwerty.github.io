@@ -14,7 +14,11 @@ language: zh-CN
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://www.hdq66.site
-permalink: :title/
+permalink: /:title/
+permalink_pinyin:
+  enable: true
+  separator: "-"
+  #exclude: #排除的文章，排出后不会进行转义
 # permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
