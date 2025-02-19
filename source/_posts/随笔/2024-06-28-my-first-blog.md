@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 第一篇博客
 date: 2024-06-28
 categories: 随笔

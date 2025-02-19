@@ -1,7 +1,8 @@
 ---
 title: windows命令行Chocolatey的使用
 date: 2024-12-24
-categories: [实用工具]
+tags: chocolatey
+categories: tools
 ---
 
 ## Chocolatey安装和使用

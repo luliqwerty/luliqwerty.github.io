@@ -2,7 +2,7 @@
 layout: post
 title: 对大一生活的总结
 date: 2024-07-06
-categories: 沉思录
+categories: 随笔
 ---
 
 ## 大一我是怎么度过的

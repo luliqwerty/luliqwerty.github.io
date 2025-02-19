@@ -2,7 +2,7 @@
 title: Hexo自动转义文章URL为拼音
 date: 2024-12-25
 tags: hexo
-categories: 奇技淫巧
+categories: tools
 ---
 
 ## 使用场景

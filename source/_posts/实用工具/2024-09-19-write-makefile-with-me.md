@@ -2,7 +2,7 @@
 title: 和我一起写Makefile
 date: 2024-09-19
 tags: [Makefile]
-categories: [实用工具]
+categories: tools
 ---
 
 ### Makefile执行过程
