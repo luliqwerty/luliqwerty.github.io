@@ -1,6 +1,6 @@
 ---
 title: Java 操作 Redis 时遇到 Redis 生成的 key 前有莫名的十六进制
-tags: Redis
+tags: [Redis, 踩坑]
 date: 2025-02-19
 categories: redis
 ---

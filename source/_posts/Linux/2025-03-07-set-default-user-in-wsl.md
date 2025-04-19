@@ -4,7 +4,7 @@ data: 2025-03-07
 categories: Linux
 tags: [wsl2, 踩坑]
 ---
-前言
+## 前言
 
 > 这是在我学习 `Redis` 的过程中遇到的问题
 
