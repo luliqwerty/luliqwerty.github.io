@@ -1,6 +1,6 @@
 ---
 title: 修改 WSL 默认用户为 root
-data: 2025-03-07
+date: 2025-03-07
 categories: Linux
 tags: [wsl2, 踩坑]
 ---
