@@ -13,7 +13,7 @@ hexo.on("generateBefore", () => {
 });
 
 hexo.on("generateAfter", () => {
-  // 检查版本更新
+  if (!hexo.theme.config.theme_version_check) return;
   https
     .get(
       "https://api.github.com/repos/D-Sketon/hexo-theme-reimu/releases/latest",
@@ -30,7 +30,7 @@ hexo.on("generateAfter", () => {
         res.on("end", () => {
           try {
             const latest = JSON.parse(result)
-              .tag_name.replace("v", "")
+              .tag_name.replace("v", "").replace("V", "")
               .split(".");
             const current = version.split(".");
             let isOutdated = false;
@@ -54,14 +54,12 @@ hexo.on("generateAfter", () => {
               );
             }
           } catch (err) {
-            hexo.log.warn("Failed to detect version info. Error message:");
-            hexo.log.warn(err);
+            hexo.log.warn("Failed to detect version info. You can get the latest version info at https://github.com/D-Sketon/hexo-theme-reimu/releases");
           }
         });
       }
     )
     .on("error", (err) => {
-      hexo.log.error("Failed to detect version info. Error message:");
-      hexo.log.error(err);
+      hexo.log.error("Failed to detect version info. You can get the latest version info at https://github.com/D-Sketon/hexo-theme-reimu/releases");
     });
 });

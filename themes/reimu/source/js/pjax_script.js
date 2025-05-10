@@ -30,12 +30,16 @@ var scrollIntoViewAndWait = (element) => {
 _$$(
   ".article-entry h1>a, .article-entry h2>a, .article-entry h3>a, .article-entry h4>a, .article-entry h5>a, .article-entry h6>a"
 ).forEach((element) => {
-  if (window.icon_font) {
+  if (window.REIMU_CONFIG.icon_font) {
     // iconfont
-    element.innerHTML = "&#xe635;";
+    element.innerHTML = window.REIMU_CONFIG.anchor_icon
+      ? `&#x${window.REIMU_CONFIG.anchor_icon};`
+      : "&#xe635;";
   } else {
     // fontawesome
-    element.innerHTML = "&#xf292;";
+    element.innerHTML = window.REIMU_CONFIG.anchor_icon
+      ? `&#x${window.REIMU_CONFIG.anchor_icon};`
+      : "&#xf292;";
   }
 });
 
@@ -49,17 +53,23 @@ _$$(".article-entry img").forEach((element) => {
     return;
   const a = document.createElement("a");
   a.href ? (a.href = element.src) : a.setAttribute("href", element.src);
-  a.dataset.pswpWidth = element.naturalWidth;
-  a.dataset.pswpHeight = element.naturalHeight;
+  if (element.naturalWidth || element.naturalHeight) {
+    a.dataset.pswpWidth = element.naturalWidth;
+    a.dataset.pswpHeight = element.naturalHeight;
+  } else {
+    console.warn(
+      "Image naturalWidth and naturalHeight cannot be obtained right now, fallback to onload."
+    );
+    element.onload = () => {
+      a.dataset.pswpWidth = element.naturalWidth;
+      a.dataset.pswpHeight = element.naturalHeight;
+    };
+  }
   a.target = "_blank";
   a.classList.add("article-gallery-item");
   element.parentNode.insertBefore(a, element);
   element.parentNode.removeChild(element);
   a.appendChild(element);
-});
-_$$(".article-gallery a.article-gallery-img").forEach((a) => {
-  a.dataset.pswpWidth = a.children[0].naturalWidth;
-  a.dataset.pswpHeight = a.children[0].naturalHeight;
 });
 window.lightboxStatus = "ready";
 window.dispatchEvent(new Event("lightbox:ready"));
@@ -67,25 +77,25 @@ window.dispatchEvent(new Event("lightbox:ready"));
 // Mobile nav
 var isMobileNavAnim = false;
 
-document
-  .getElementById("main-nav-toggle")
+_$("#main-nav-toggle")
   .off("click")
-  .on("click", function () {
+  .on("click", () => {
     if (isMobileNavAnim) return;
     isMobileNavAnim = true;
     document.body.classList.toggle("mobile-nav-on");
+    _$("#mask").classList.remove("hide");
     setTimeout(() => {
       isMobileNavAnim = false;
-    }, 200);
+    }, 300);
   });
 
-document
-  .getElementById("mask")
-  .off("click")
-  .on("click", function () {
+_$("#mask")
+  ?.off("click")
+  .on("click", () => {
     if (isMobileNavAnim || !document.body.classList.contains("mobile-nav-on"))
       return;
     document.body.classList.remove("mobile-nav-on");
+    _$("#mask").classList.add("hide");
   });
 
 _$$(".sidebar-toc-btn").forEach((element) => {
@@ -145,46 +155,59 @@ _$$(".article-entry img").forEach((element) => {
 
 // to top
 var sidebarTop = _$(".sidebar-top");
-sidebarTop.style.transition = "opacity 1s";
-sidebarTop.off("click").on("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+if (sidebarTop) {
+  sidebarTop.style.transition = "all .3s";
+  sidebarTop.off("click").on("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
-});
-if (document.documentElement.scrollTop < 10) {
-  sidebarTop.style.opacity = 0;
+  if (document.documentElement.scrollTop < 10) {
+    sidebarTop.style.opacity = 0;
+  }
 }
 
-window.off("scroll").on("scroll", () => {
+var __sidebarTopScrollHandler;
+
+if (__sidebarTopScrollHandler) {
+  window.off("scroll", __sidebarTopScrollHandler);
+}
+
+__sidebarTopScrollHandler = () => {
   const sidebarTop = _$(".sidebar-top");
   if (document.documentElement.scrollTop < 10) {
     sidebarTop.style.opacity = 0;
   } else {
     sidebarTop.style.opacity = 1;
   }
-});
+};
+
+window.on("scroll", __sidebarTopScrollHandler);
 
 // toc
-_$$(".toc a").forEach((element) => {
+_$$("#mobile-nav .toc li").forEach((element) => {
   element.off("click").on("click", () => {
     if (isMobileNavAnim || !document.body.classList.contains("mobile-nav-on"))
       return;
     document.body.classList.remove("mobile-nav-on");
+    _$("#mask").classList.add("hide");
   });
 });
 
-_$$(".sidebar-menu-link-dummy").forEach((element) => {
+_$$("#mobile-nav .sidebar-menu-link-dummy").forEach((element) => {
   element.off("click").on("click", () => {
     if (isMobileNavAnim || !document.body.classList.contains("mobile-nav-on"))
       return;
     setTimeout(() => {
       document.body.classList.remove("mobile-nav-on");
+      _$("#mask").classList.add("hide");
     }, 200);
   });
 });
 
 function tocInit() {
+  if (!_$("#sidebar")) return;
   const navItems =
     getComputedStyle(_$("#sidebar")).display === "block"
       ? _$$("#sidebar .sidebar-toc-wrapper li")
@@ -195,7 +218,9 @@ function tocInit() {
 
   const anchorScroll = (event, index) => {
     event.preventDefault();
-    const target = _$(decodeURI(event.currentTarget.getAttribute("href")));
+    const target = document.getElementById(
+      decodeURI(event.currentTarget.getAttribute("href")).slice(1)
+    );
     activeLock = index;
     scrollIntoViewAndWait(target).then(() => {
       activateNavByIndex(index);
@@ -206,7 +231,9 @@ function tocInit() {
   const sections = [...navItems].map((element, index) => {
     const link = element.querySelector("a.toc-link");
     link.off("click").on("click", (e) => anchorScroll(e, index));
-    const anchor = _$(decodeURI(link.getAttribute("href")));
+    const anchor = document.getElementById(
+      decodeURI(link.getAttribute("href")).slice(1)
+    );
     if (!anchor) return null;
     const alink = anchor.querySelector("a");
     alink?.off("click").on("click", (e) => anchorScroll(e, index));
@@ -234,8 +261,10 @@ function tocInit() {
     while (!parent.matches(".sidebar-toc")) {
       if (parent.matches("li")) {
         parent.classList.add("active");
-        const t = _$(
-          decodeURI(parent.querySelector("a.toc-link").getAttribute("href"))
+        const t = document.getElementById(
+          decodeURI(
+            parent.querySelector("a.toc-link").getAttribute("href").slice(1)
+          )
         );
         if (t) {
           t.classList.add("active");
@@ -244,11 +273,7 @@ function tocInit() {
       parent = parent.parentNode;
     }
     // Scrolling to center active TOC element if TOC content is taller than viewport.
-    if (
-      !document
-        .querySelector(".sidebar-toc-sidebar")
-        .classList.contains("hidden")
-    ) {
+    if (!_$(".sidebar-toc-sidebar").classList.contains("hidden")) {
       const tocWrapper = _$(".sidebar-toc-wrapper");
       tocWrapper.scrollTo({
         top:
@@ -305,3 +330,86 @@ window
     document.body.appendChild(script);
   });
 tocInit();
+
+_$(".sponsor-button-wrapper")
+  ?.off("click")
+  .on("click", () => {
+    _$(".sponsor-button-wrapper")?.classList.toggle("active");
+    _$(".sponsor-tip")?.classList.toggle("active");
+    _$(".sponsor-qr")?.classList.toggle("active");
+  });
+
+_$(".share-icon.icon-weixin")
+  ?.off("click")
+  .on("click", function (e) {
+    const iconPosition = this.getBoundingClientRect();
+    const shareWeixin = this.querySelector("#share-weixin");
+
+    if (iconPosition.x - 148 < 0) {
+      shareWeixin.style.left = `-${iconPosition.x - 10}px`;
+    } else if (iconPosition.x + 172 > window.innerWidth) {
+      shareWeixin.style.left = `-${310 - window.innerWidth + iconPosition.x}px`;
+    } else {
+      shareWeixin.style.left = "-138px";
+    }
+    if (e.target === this) {
+      shareWeixin.classList.toggle("active");
+    }
+    // if contains img return
+    if (_$(".share-weixin-canvas").children.length) {
+      return;
+    }
+    const { cover, excerpt, description, title, stripContent, author } =
+      window.REIMU_POST;
+    _$("#share-weixin-banner").src = cover;
+    _$("#share-weixin-title").innerText = title;
+    _$("#share-weixin-desc").innerText = excerpt || description || stripContent;
+    _$("#share-weixin-author").innerText = "By: " + author;
+    QRCode.toDataURL(window.REIMU_POST.url, function (error, dataUrl) {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      _$("#share-weixin-qr").src = dataUrl;
+      htmlToImage
+        .toPng(_$(".share-weixin-dom"), {
+          skipFonts: true,
+          preferredFontFormat: "woff2",
+          backgroundColor: "white",
+        })
+        .then((dataUrl) => {
+          const img = new Image();
+          img.src = dataUrl;
+          _$(".share-weixin-canvas").appendChild(img);
+        })
+        .catch(() => {
+          // we assume that the error is caused by the browser's security policy
+          // so we will remove the banner and try again
+          _$("#share-weixin-banner").remove();
+          htmlToImage
+            .toPng(_$(".share-weixin-dom"), {
+              skipFonts: true,
+              preferredFontFormat: "woff2",
+              backgroundColor: "white",
+            })
+            .then((dataUrl) => {
+              const img = new Image();
+              img.src = dataUrl;
+              _$(".share-weixin-canvas").appendChild(img);
+            })
+            .catch(() => {
+              console.error("Failed to generate weixin share image.");
+            });
+        });
+    });
+  });
+
+
+var imgElement = _$("#header > img");
+if (imgElement.src || imgElement.style.background) {
+  window.bannerElement = imgElement;
+} else {
+  window.bannerElement = _$("#header > picture img");
+}
+
+window.generateSchemeHandler?.();

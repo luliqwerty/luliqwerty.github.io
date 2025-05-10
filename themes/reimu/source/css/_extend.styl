@@ -13,7 +13,7 @@ $base-style
       border-bottom: 1px solid var(--color-h2-border)
       bottom: -15px
       box-sizing: unset
-      transition: .3s
+      transition: 1s
 
     &:after
       content: ""
@@ -24,7 +24,7 @@ $base-style
       bottom: -18px
       left: 0
       border-radius: 10px
-      box-shadow: 0 2px 12px var(--color-h2-after-shadow)
+      box-shadow: 0 2px 12px var(--color-red-6-shadow)
       transition: .3s
 
     &:hover:after
@@ -46,13 +46,13 @@ $base-style
   hr
     margin: 10px 0
     opacity: .3
-    height: 2px
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.75) 50%, transparent 0%)
-    background-size: 25px 2px
+    height: 4px
+    background-image: linear-gradient(to right, var(--red-0) 50%, transparent 0%)
+    background-size: 50px 4px
     background-repeat: repeat-x
     border: none
-    filter: drop-shadow(0px 0px 2px red)
-    transition: opacity .3s
+    filter: drop-shadow(0px 0px 2px var(--red-1))
+    transition: opacity .3s, color 0.3s
 
     &:hover
       opacity: .5

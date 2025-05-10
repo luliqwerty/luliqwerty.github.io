@@ -1,19 +1,16 @@
 .post-link-card-wrap
-  position: relative
   display: flex
-  width: 100%
-  align-items: center
   justify-content: center
   margin: 20px 0
 
 .post-link-card
   display: flex
   padding: 10px
-  border-radius: 5px
+  border-radius: post-radius
   overflow: hidden
   position: relative
   transition: .3s
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1)
+  box-shadow: 0 0 10px 2px var(--color-hover-shadow)
   width: 60%
 
   @media mg-normal
@@ -21,7 +18,7 @@
 
   &:hover
     transform: scale(1.015)
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2)
+    box-shadow: 0 0 10px 4px var(--color-hover-shadow)
 
   a
     position: absolute
@@ -31,8 +28,6 @@
     left: 0
 
 .post-link-card-cover-wrap
-  position: relative
-  overflow: hidden
   height: 66px
   width: 68px
   padding-right: 20px
@@ -42,7 +37,7 @@
   img
     width: 100%
     height: 100%
-    border-radius: 5px
+    border-radius: post-radius
     object-fit: cover
 
   &.auto
@@ -50,7 +45,7 @@
     display: flex
     align-items: center
     justify-content: center
-    border-radius: 5px
+    border-radius: post-radius
     padding-right: 0
     margin-right: 20px
 
@@ -63,30 +58,23 @@
 .post-link-card-item-wrap
   display: flex
   flex-direction: column
-  flex-shrink: 5
-  width: 100%
   justify-content: center
-  height: 66px
   overflow: hidden
+
+  div
+    padding: 5px 0
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
 
 .post-link-card-title
   font-size: 18px
   font-weight: 700
-  padding: 5px 0
   color: var(--red-1)
-  text-overflow: ellipsis
-  white-space: nowrap
-  overflow: hidden
-  width: 100%
 
 .post-link-card-excerpt
   font-size: 14px
   color: var(--grey-9)
-  padding: 5px 0
-  text-overflow: ellipsis
-  white-space: nowrap
-  overflow: hidden
-  width: 100%
 
   .icon-link
     font-size: 12px

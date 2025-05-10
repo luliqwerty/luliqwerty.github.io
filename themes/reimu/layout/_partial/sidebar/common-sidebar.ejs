@@ -18,18 +18,30 @@
   </div>
 </div>
 <div class="sidebar-social">
-  <% for (var i in theme.social) { %>
+  <% for (let i in theme.social) { %>
     <div class="<%= `icon-${i}` %> sidebar-social-icon">
-      <a href=<%= theme.social[i] %> itemprop="url" target="_blank" aria-label="<%= i %>"></a>
+      <a href=<%= theme.social[i] %> itemprop="url" target="_blank" aria-label="<%= i %>" rel="noopener external nofollow noreferrer"></a>
     </div>
   <% } %>
 </div>
 <div class="sidebar-menu">
-  <% for (var i in theme.menu) { %>
-    <div class="sidebar-menu-link-wrap">
-      <a class="sidebar-menu-link-dummy" href="<%- url_for(theme.menu[i]) %>" aria-label="<%= __(i) %>"></a>
-      <span class="sidebar-menu-icon"></span>
-      <div class="sidebar-menu-link"><%= __(i) %></div>
-    </div>
+  <% if (!Array.isArray(theme.menu)) { %>
+    <% for (let i in theme.menu) { %>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="<%- url_for_lang(theme.menu[i], { relative: false }) %>" aria-label="<%= __(i) %>"></a>
+        <div class="sidebar-menu-icon icon-taichi"></div>
+        <div class="sidebar-menu-link"><%= __(i) %></div>
+      </div>
+    <% } %>
+  <% } else { %>
+    <% for (let item of theme.menu) { %>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="<%- url_for_lang(item.url, { relative: false }) %>" aria-label="<%= __(item.name) %>"></a>
+        <div class="sidebar-menu-icon icon <%= (item.icon === 'e62b' && theme.icon_font) || (item.icon === 'f6ad' && !theme.icon_font) || !item.icon ? 'rotate' : '' %>">
+          <%- item.icon ? `&#x${item.icon};` : (theme.icon_font ? '&#xe62b;' : '&#xf6ad;') %>
+        </div>
+        <div class="sidebar-menu-link"><%= __(item.name) %></div>
+      </div>
+    <% } %>
   <% } %>
 </div>

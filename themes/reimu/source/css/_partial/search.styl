@@ -1,5 +1,5 @@
 .popup
-  display: none
+  visibility: hidden
   position: fixed
   top: 10%
   left: 50%
@@ -11,6 +11,15 @@
   color: var(--grey-9)
   z-index: 9999
   border-radius: post-radius
+  opacity: 0
+  transform: scale(0.5)
+  transition: 0.3s
+  box-shadow: 0 0 10px var(--color-meta-shadow)
+
+  &.show
+    visibility: visible
+    opacity: 1
+    transform: scale(1)
 
   @media mg-normal
     padding: 5px
@@ -22,39 +31,26 @@
     border-radius: 0
     max-height: 100%
 
-.popoverlay
-  position: fixed
-  z-index: 2080
-  width: 100%
-  height: 100%
-  top: 0
-  left: 0
-  background-color: rgba(0, 0, 0, .3)
-
 .reimu-popup
   overflow: hidden
   padding: 0
 
 .popup-btn-close
-  position: absolute
-  right: 15px
   color: var(--red-1)
   font: 20px bold
-  text-transform: uppercase
-  vertical-align: middle
-  if reimu_cursor
-    cursor: var(--cursor-pointer)
-  else
-    cursor: pointer
+  cursor: var(--cursor-pointer) !important
   padding-left: 15px
-  top: 8px
+  transition: 0.3s
+
+  &:hover
+    opacity: .8
 
 .reimu-search
+  display: flex
+  align-items: center
   padding: 8px 15px
   max-height: 50px
   border-bottom: 1px solid #ccc
-  background: #f5f5f5
-  border-radius: 5px 5px 0 0
 
 .reimu-search-input-icon
   display: inline-block
@@ -64,20 +60,24 @@
   margin-right: 5px
 
 .reimu-search-input
-  display: inline-block
-  width: calc(90% - 20px)
+  flex: 1
 
   input
-    padding: 5px 0
     width: 100%
     outline: none
     border: none
     background: transparent
+    color: var(--grey-9)
+    font-size: 16px
+    vertical-align: middle
+    font-family: font-basic
+
+  input[type=search]::-webkit-search-cancel-button
+    -webkit-appearance: none
 
 .reimu-powered
   float: right
-  if reimu_cursor
-    cursor: var(--cursor-default) !important
+  cursor: var(--cursor-default) !important
 
   img
     display: inline-block
@@ -87,9 +87,12 @@
 .reimu-results
   position: relative
   overflow: auto
-  padding: 10px 30px
+  padding: 15px 30px
   box-sizing: border-box
-  height: calc(100% - 50px)
+  max-height: calc(100% - 50px)
+
+  @media mq-normal
+    min-height: 300px
 
   hr
     margin: 10px 0
@@ -101,39 +104,40 @@
     color: var(--red-1)
 
 #reimu-hits
-  margin-top: 10px
-  margin-left: 10px
+  margin: 10px 0 0 10px
+
+  mark
+    background: var(--red-1)
+    color: #fff
 
 .reimu-hit-item-link
   display: block
   text-decoration: none
   color: var(--red-2)
-  margin-left: 15px
-  padding: 12px 0
+  padding: 12px 0 12px 25px
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
 
   &:before
     content: ""
     width: 6px
-    height: 15px
+    height: 12px
     background: var(--color-h2-after)
     display: inline-block
     vertical-align: middle
-    margin-top: -2px
-    margin-right: 11px
-    margin-left: -25px
-    box-shadow: 0 2px 12px var(--color-h2-after-shadow)
+    margin: -2px 11px 0 -25px
+    box-shadow: 0 2px 12px var(--color-red-6-shadow)
     opacity: 0.5
     transition: 0.2s
 
   &:hover:before
-    width: 6px
     height: 6px
     border-radius: 50%
     opacity: 1
 
 .reimu-pagination
   margin: 10px auto
-  background: var(--color-wrap)
   border-radius: post-radius
   text-align: center
   color: var(--grey-9)
@@ -143,10 +147,11 @@
     padding: 10px 15px
     color: var(--grey-9)
     text-decoration: none
-    transition: background 0.2s
+    transition: 0.2s
 
     &:hover
       background: var(--red-2)
+      box-shadow: 0 0 10px var(--color-red-6-shadow)
       color: #fff
 
   .pagination-item
@@ -159,11 +164,23 @@
 
   .current
     .page-number
-      color: white
+      color: #fff
       background: var(--red-1)
       font-weight: bold
-      box-shadow: 0 2px 6px rgba(255, 78, 106, 0.55)
+      box-shadow: 0 0 10px var(--color-red-6-shadow)
 
   .disabled-item
     display: none
 
+
+.reimu-bg
+  position: absolute
+  right: 0
+  bottom: 0
+  z-index: -1
+  opacity: .5
+
+#reimu-hits-empty
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap

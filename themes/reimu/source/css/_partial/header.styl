@@ -1,4 +1,5 @@
 #header
+  min-height: 400px
   height: banner-height
   position: relative
 
@@ -9,7 +10,7 @@
     width: 100%
     height: 150%
     z-index: -2
-
+    user-select: none
     display: block
     object-fit: cover
     transition: 0.3s
@@ -26,7 +27,6 @@
   height: 100%
   position: relative
   max-width: 100%
-  margin: 0
 
 [data-theme="dark"]
   #header-nav:hover
@@ -39,10 +39,9 @@
   right: 0
   display: flex
   justify-content: center
-  overflow: hidden
   background: var(--color-header-background)
-  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1)
-  transition: .3s
+  box-shadow: 0 0 10px 3px var(--color-hover-shadow)
+  transition: background 1s, top .3s
   z-index: 200
 
   &:hover
@@ -52,59 +51,50 @@
     top: -80px
 
 #header-title
-  font-family: font-title
+  font-family: font-basic
   font-weight: 700
   text-align: center
-  height: logo-size
   position: absolute
   top: 50%
-  left: 0
-  margin-top: logo-size * -0.5
+  margin: logo-size * -0.5 2.5% 0
+  width: 95%
 
 $logo-text
   text-decoration: none
   color: #fff
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
 
 #logo
   @extend $logo-text
   font-size: logo-size
   font-weight: 700
-  line-height: logo-size
   letter-spacing: 2px
   display: inline-block
-  width: 80%
   transform: translateY(-20%)
-  text-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.5);
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, .7);
 
   @media mg-large
-    width: 90%
     font-size: 35px
 
   @media mq-tablet
-    width: 95%
     font-size: 30px
 
   @media mq-mobile
-    width: 100%
     font-size: 30px
 
 #subtitle
   @extend $logo-text
   font-size: subtitle-size
   font-weight: 400
-  line-height: subtitle-size
   letter-spacing: 1px
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7)
 
   @media mg-large
     font-size: 15px
 
   @media mq-tablet
-    width: 95%
     font-size: 14px
 
   @media mq-mobile
-    width: 100%
     font-size: 13px
 
 #subtitle-wrap
@@ -113,14 +103,12 @@ $logo-text
 #main-nav
   display: flex
   align-items: center
-  margin-left: -15px
 
 $nav-link
   color: var(--red-0)
   opacity: 0.8
   text-decoration: none
-  transition: opacity 0.2s
-  display: block
+  transition: 0.2s
   padding: 20px 15px
 
 $nav-link-wrap
@@ -144,12 +132,10 @@ $nav-link-wrap
   font-size: font-size
   width: font-size
   height: font-size
-  padding: 20px 15px
-  position: relative
-  if reimu_cursor
-    cursor: var(--cursor-pointer)
-  else
-    cursor: pointer
+  will-change: transform
+  &:hover
+    opacity: 1
+    transform: scale(1.1)
 
 [data-theme="dark"]
   .main-nav-link, .nav-icon, .main-nav-link-wrap
@@ -157,38 +143,108 @@ $nav-link-wrap
 
 .main-nav-link-wrap
   @extend $nav-link-wrap
-  @media mq-mobile
+  @media mg-normal
     display: none
 
+  &:hover .main-nav-icon:before
+    transform: rotate(90deg) scale(1.1)
+
   &:hover .main-nav-icon
-    transition: transform 1s
-    transform: rotate(360deg)
+    transform: scale(1.1)
+
+  &:hover .main-nav-icon.rotate
+    transform: rotate(90deg) scale(1.1)
 
 .main-nav-link
   @extend $nav-link
-  font-weight: 400
   letter-spacing: 1px
+  font-weight: 700
+  opacity: 0.7
 
 .main-nav-icon
   @extend $nav-link
-  background: url("../images/taichi.png") no-repeat center / 80%
-  transform: rotate(0deg)
-  transition: transform 1s
-  if reimu_cursor
-    cursor: var(--cursor-pointer)
-  else
-    cursor: pointer
+  cursor: var(--cursor-pointer) !important
+  padding: 15px 5px
+  display: flex
+  align-items: center
+  font-size: 24px
+  font-weight: 400
+  transition: transform 0.3s, color 0.3s
+  will-change: transform
+
+  &.rotate
+    transform: rotate(90deg)
+
+  &:before
+    font-size: 24px
+    font-weight: 400
+    transform: rotate(90deg)
+    transition: transform 0.3s, color 0.3s
+    will-change: transform
 
 #main-nav-toggle
   display: none
 
-  @media mg-large
+  @media mg-normal
     display: block
 
-#sub-nav
+#sub-nav, #i18n-nav
   display: flex
   align-items: center
-  margin-right: -15px
 
-#nav-sun-btn:before, #nav-moon-btn:before
+#nav-sun-btn:before, #nav-moon-btn:before, #nav-circle-half-stroke-btn:before
   font-weight: 700
+
+#i18n-nav
+  margin-left: 8px
+
+.custom-dropdown {
+  position: relative;
+}
+
+.select-selected {
+  padding: 14px;
+  color: var(--red-2);
+  cursor: var(--cursor-pointer) !important;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select-items {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  background-color: var(--color-wrap);
+  margin-top: 5px;
+  display: none;
+  z-index: 1;
+  font-size: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 3px var(--color-hover-shadow);
+}
+
+.select-items li {
+  list-style: none;
+  padding: 10px;
+  cursor: var(--cursor-pointer) !important;
+  color: var(--red-2);
+  transition: 1s;
+}
+
+.select-items li:hover {
+  color: #fff;
+  background: var(--red-1);
+}
+
+.select-items.show {
+  display: block;
+}
+
+.select-items li.selected {
+  background: var(--red-1);
+  color: #fff;
+}
