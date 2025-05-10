@@ -6,33 +6,42 @@
   box-shadow: 0 0 10px 3px var(--color-hover-shadow)
 
 .widget-wrap
-  margin: block-margin 0
+  margin: 40px 0
   background: var(--color-wrap)
   border-radius: post-radius
   transition: .3s
 
+.widget-wrapper
+  transition: .3s
+
+  .aos-animate
+    transition-property: initial !important
+    &:hover
+      box-shadow: 0 0 10px 3px var(--color-hover-shadow)
+
   &:hover
     transform: scale(1.015)
-    box-shadow: 0 0 10px 3px var(--color-hover-shadow)
 
 .widget-title
-  text-decoration: none
   text-transform: uppercase
   letter-spacing: 2px
   color: var(--grey-9)
-  line-height: 1em
-  font-weight: bold
   padding: 20px 20px 10px
 
 .widget
   color: var(--grey-7)
   padding: 10px 20px
-  border-radius: 3px
+
+  li
+    color: var(--color-link)
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
 
   a, span
     color: var(--color-link)
     text-decoration: none
-    opacity: .8
+    opacity: .85
     transition: .3s
 
     &:hover
@@ -48,7 +57,8 @@
       list-style: none
 
   li
-    margin: 10px 0
+    margin: 5px 0
+    line-height: normal
 
     &:before
       content: ""
@@ -58,7 +68,7 @@
       background: var(--color-h2-after)
       vertical-align: middle
       margin-right: 11px
-      box-shadow: 0 2px 12px var(--color-h2-after-shadow)
+      box-shadow: 0 2px 12px var(--color-red-6-shadow)
       opacity: .5
       transition: .3s
 

@@ -3,7 +3,6 @@ $code-block
   background: var(--highlight-background)
   padding: 0 article-padding 15px
   border-radius: 10px
-  //overflow: auto
   color: var(--highlight-foreground)
   line-height: font-size * line-height
 
@@ -18,14 +17,12 @@ $line-numbers
 
   figure
     display: block
-    margin-block-start: 1em
-    margin-block-end: 1em
-    margin-inline-start: 0
-    margin-inline-end: 0
+    margin: (line-height / 3 * 2) 0
     transition: 0.3s
+    box-shadow: 0 0 10px 2px var(--color-hover-shadow)
     
     &:hover
-      box-shadow: 0 0.3125rem 0.625rem -0.125rem var(--highlight-scrollbar)
+      box-shadow: 0 0 10px 4px var(--color-hover-shadow)
 
     ::-webkit-scrollbar
       width: 10px
@@ -42,9 +39,10 @@ $line-numbers
       background-color: var(--highlight-scrollbar)
 
   pre, code, kbd
-    font-family: "Ubuntu Mono"
+    font-family: font-code
     font-size: 95%
     transition: 0.3s
+    word-break: break-word
 
   code, kbd
     background: var(--color-code-background)
@@ -63,7 +61,15 @@ $line-numbers
       padding: 0
 
   .highlight
+    overflow: hidden
+    interpolate-size: allow-keywords
     @extend $code-block
+
+    &.code-closed
+      pre
+        height: 0
+        opacity: 0
+        overflow: hidden
 
     pre
       border: none
@@ -91,6 +97,7 @@ $line-numbers
 
     .gutter
       width: 30px
+      vertical-align: top
 
     .gutter pre
       @extend $line-numbers
@@ -103,6 +110,12 @@ $line-numbers
     .line.marked
       background: var(--highlight-selection)
 
+    .line .deletion
+      background: #ff5e5e80
+
+    .line .addition
+      background: #5eff667a
+
   .gist
     border-style: solid
     border-color: var(--color-border)
@@ -112,7 +125,7 @@ $line-numbers
 
     .gist-file
       border: none
-      font-family: "Ubuntu Mono"
+      font-family: font-code
       margin: 0
 
       .gist-data
@@ -136,7 +149,7 @@ $line-numbers
       .gist-meta
         background: var(--highlight-background)
         color: var(--highlight-comment)
-        font: 0.85em font-sans
+        font: 0.85em font-basic
         text-shadow: 0 0
         padding: 0
         margin-top: 1em
@@ -240,11 +253,12 @@ pre
   margin: 5px
   z-index: 1
   filter: invert(50%)
-  if reimu_cursor
-    cursor: var(--cursor-pointer)
-  else
-    cursor: pointer
+  cursor: var(--cursor-pointer) !important
   color: #fff
+  transition: .3s
+
+  &:hover
+    opacity: .7
 
 .code-lang
   margin: 5px
@@ -252,27 +266,20 @@ pre
   font-weight: bold
   z-index: 1
   filter: invert(50%)
-  if reimu_cursor
-    cursor: var(--cursor-pointer)
-  else
-    cursor: pointer
+  cursor: var(--cursor-pointer) !important
 
 .code-expand
   margin: 5px
   filter: invert(50%)
   z-index: 1
-  if reimu_cursor
-    cursor: var(--cursor-pointer)
-  else
-    cursor: pointer
+  cursor: var(--cursor-pointer) !important
   transition: .3s
   transform: rotate(0deg)
   color: #fff
 
+  &:hover
+    opacity: .7
+
 .code-closed .code-expand
   transform: rotate(-180deg) !important
   transition: .3s
-
-.code-closed
-  pre
-    display: none

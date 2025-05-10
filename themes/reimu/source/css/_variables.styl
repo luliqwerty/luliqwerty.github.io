@@ -1,99 +1,99 @@
 // Colors
 :root
-  --red-0: #ff0000
-  --red-1: #ff5252
-  --red-2: #ff7c7c
-  --red-3: #ffafaf
-  --red-4: #ffd0d0
-  --red-5: #ffe4e4
-  --red-5-5: #ffecec
-  --red-6: #fff3f3
+  --red-0: unquote(light-red-0)
+  --red-1: unquote(light-red-1)
+  --red-2: unquote(light-red-2)
+  --red-3: unquote(light-red-3)
+  --red-4: unquote(light-red-4)
+  --red-5: unquote(light-red-5)
+  --red-5-5: unquote(light-red-5-5)
+  --red-6: unquote(light-red-6)
 
-  --grey-9: #999
-  --grey-7: #777
+  --grey-9: #888
+  --grey-7: var(--color-default)
 
   --color-archive-year: black
   --color-default: #555
   --color-border: var(--red-3)
   --color-link: var(--red-1)
   --color-background: #eee
-  --color-code-background: #f5f5f5
+  --color-code-background: #f8f8f8
   --color-header-background: rgba(255, 255, 255, 0.9)
   --color-footer-background: #fff
   --color-mobile-nav-background: #fff
   --color-wrap: #fff
-  --color-sticky: #ffecec
+  --color-sticky: #fff
 
   --color-h2-border: #eee
   --color-meta-shadow: var(--red-6)
-  --color-hover-shadow: rgba(150, 150, 150, 0.1)
-  --color-h2-after: rgba(255, 0, 0, 0.6)
-  --color-h2-after-shadow: rgba(255, 78, 106, 0.7)
+  --color-hover-shadow: rgba(120, 120, 120, 0.15)
+  --color-h2-after: var(--red-1)
+  --color-red-6-shadow: unquote(light-color-red-6-shadow)
+  --color-red-3-shadow: unquote(light-color-red-3-shadow)
 
-  --highlight-nav: #e6e6e6
-  --highlight-scrollbar: #d6d6d6
-  --highlight-background: #f7f7f7
-  --highlight-current-line: #dadada
-  --highlight-selection: #e9e9e9
-  --highlight-foreground: #4d4d4d
-  --highlight-comment: #7d7d7d
-  --highlight-red: #c8362b
-  --highlight-orange: #b66014
-  --highlight-yellow: #cb911d
-  --highlight-green: #2ea52e
-  --highlight-aqua: #479d9d
-  --highlight-blue: #1973b8
-  --highlight-purple: #7135ac
+  --highlight-nav: unquote(light-highlight-nav)
+  --highlight-scrollbar: unquote(light-highlight-scrollbar)
+  --highlight-background: unquote(light-highlight-background)
+  --highlight-current-line: unquote(light-highlight-current-line)
+  --highlight-selection: unquote(light-highlight-selection)
+  --highlight-foreground: unquote(light-highlight-foreground)
+  --highlight-comment: unquote(light-highlight-comment)
+  --highlight-red: unquote(light-highlight-red)
+  --highlight-orange: unquote(light-highlight-orange)
+  --highlight-yellow: unquote(light-highlight-yellow)
+  --highlight-green: unquote(light-highlight-green)
+  --highlight-aqua: unquote(light-highlight-aqua)
+  --highlight-blue: unquote(light-highlight-blue)
+  --highlight-purple: unquote(light-highlight-purple)
 
-  --cursor-default: url(../images/cursor/reimu-cursor-default.cur), auto
-  --cursor-pointer: url(../images/cursor/reimu-cursor-pointer.cur), pointer
-  --cursor-text: url(../images/cursor/reimu-cursor-text.cur), text
+  if cursor-enabled
+    --cursor-default: url(cursor-default), auto
+    --cursor-pointer: url(cursor-pointer), pointer
+    --cursor-text: url(cursor-text), text
+  else
+    --cursor-default: default
+    --cursor-pointer: pointer
+    --cursor-text: text
+
+  --footer-icon: url(footer-icon)
+  --sponsor-icon: url(sponsor-icon)
+  --top-icon: url(top-icon)
 [data-theme="dark"]
   &:root
-    --red-0: #ff5252
-    --red-1: #ff5252
-    --red-2: #ff7c7c
-    --red-3: #ffafaf
-    --red-4: rgba(255,208,208,0.5)
-    --red-5: rgba(255,228,228,0.2)
-    --red-5-5: rgba(255,236,236,0.1)
-    --red-6: rgba(255,243,243,0.2)
-
-    --grey-9: #999
-    --grey-7: #777
+    --red-0: var(--red-1)
+    --red-4: unquote(dark-red-4)
+    --red-5: unquote(dark-red-5)
+    --red-5-5: unquote(dark-red-5-5)
+    --red-6: unquote(dark-red-6)
 
     --color-archive-year: #999
     --color-default: #999
     --color-border: var(--red-5)
-    --color-link: var(--red-1)
     --color-background: #21252b
-    --color-code-background: rgba(232,232,232,0.2)
+    --color-code-background: rgba(232,232,232,0.1)
     --color-header-background: #222222
     --color-footer-background: #21252b
     --color-mobile-nav-background: #21252b
     --color-wrap: #272b30
-    --color-sticky: #ffecec
 
     --color-h2-border: #47474a
     --color-meta-shadow: rgba(0, 0, 0, 0.2)
     --color-hover-shadow: rgba(0, 0, 0, 0.2)
-    --color-h2-after: #ff5252
-    --color-h2-after-shadow: rgba(255, 78, 106, 0.7)
 
-    --highlight-nav: #2e353f
-    --highlight-scrollbar: #454d59
-    --highlight-background: #22272e
-    --highlight-current-line: #393939
-    --highlight-selection: #515151
-    --highlight-foreground: #cccccc
-    --highlight-comment: #999999
-    --highlight-red: #f47067
-    --highlight-orange: #f69d50
-    --highlight-yellow: #ffcc66
-    --highlight-green: #99cc99
-    --highlight-aqua: #66cccc
-    --highlight-blue: #54b6ff
-    --highlight-purple: #dcbdfb
+    --highlight-nav: unquote(dark-highlight-nav)
+    --highlight-scrollbar: unquote(dark-highlight-scrollbar)
+    --highlight-background: unquote(dark-highlight-background)
+    --highlight-current-line: unquote(dark-highlight-current-line)
+    --highlight-selection: unquote(dark-highlight-selection)
+    --highlight-foreground: unquote(dark-highlight-foreground)
+    --highlight-comment: unquote(dark-highlight-comment)
+    --highlight-red: unquote(dark-highlight-red)
+    --highlight-orange: unquote(dark-highlight-orange)
+    --highlight-yellow: unquote(dark-highlight-yellow)
+    --highlight-green: unquote(dark-highlight-green)
+    --highlight-aqua: unquote(dark-highlight-aqua)
+    --highlight-blue: unquote(dark-highlight-blue)
+    --highlight-purple: unquote(dark-highlight-purple)
     img
       filter: brightness(70%)
 
@@ -108,8 +108,8 @@
       animation: blur-darken 0.8s ease-in-out forwards
 
 // Fonts
-font-title = Mulish,'Noto Serif SC','Noto Serif JP',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif
-font-sans = Mulish,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif
+font-basic = unquote(custom-article-families) unquote(article-families) unquote(local-article-families)
+font-code = unquote(custom-code-families) unquote(code-families) unquote(local-code-families)
 
 font-size = 14px
 line-height = 1.8em
@@ -118,24 +118,14 @@ line-height-title = 1.2em
 // Header
 logo-size = 40px
 subtitle-size = 18px
-banner-height = 400px
+banner-height = 35vh
 
-sidebar = hexo-config("sidebar")
-reimu_cursor = hexo-config("reimu_cursor")
+sidebar = postHasSidebar || hexo-config("sidebar")
 
 // Layout
 block-margin = 50px
 article-padding = 20px
 mobile-nav-width = 280px
-main-column = 9
-sidebar-column = 3
-
-_sidebar-column = sidebar-column
-
-// Grids
-column-width = 80px
-gutter-width = 20px
-columns = main-column + _sidebar-column
 
 // Media queries
 mq-mobile = "screen and (max-width: 479px)"
@@ -146,4 +136,4 @@ mg-normal = "screen and (max-width: 767px)"
 mq-large = "screen and (min-width: 960px)"
 mg-large = "screen and (max-width: 959px)"
 
-post-radius = 5px
+post-radius = 10px

@@ -1,12 +1,12 @@
 .hr-line
   margin: 10px article-padding + 15px
   opacity: 0.3
-  height: 2px
+  height: 4px
   background-image: linear-gradient(to right, var(--red-0) 50%, transparent 0%)
-  background-size: 25px 2px
+  background-size: 50px 4px
   background-repeat: repeat-x
-  filter: drop-shadow(0px 0px 2px red)
-  transition: opacity 0.3s
+  filter: drop-shadow(0px 0px 2px var(--red-1))
+  transition: opacity 0.3s, color 0.3s
 
   &:hover
     opacity: 0.5
@@ -14,11 +14,10 @@
 .article-inner
   background: var(--color-wrap)
   border-radius: post-radius
-  overflow: hidden
+  display: flow-root
   transition: 0.3s
 
 .article-meta
-  clearfix()
   display: flex
   flex-direction: column
   padding: article-padding article-padding + 15px 0
@@ -29,15 +28,14 @@ $article-meta-tag
   font-size: 14px
   color: var(--red-1)
   background: var(--red-5)
-  border-radius: 20px
+  border-radius: post-radius
   padding: 10px 18px
   margin: 0 12px 1em 0
-  box-shadow: 0 0 5px 3px var(--color-meta-shadow)
+  box-shadow: 0 0 5px 2px var(--color-meta-shadow)
   transition: 0.3s
 
 .article-date
   display: flex
-  align-items: center
 
 .article-date-link
   @extend $article-meta-tag
@@ -48,7 +46,6 @@ $article-meta-tag
 .article-category
   display: flex
   flex-wrap: wrap
-  align-items: center
 
 .article-category-link
   @extend $article-meta-tag
@@ -57,20 +54,10 @@ $article-meta-tag
     font-weight: 700
     margin-right: 10px
 
-.article-title
-  text-decoration: none
-  font-size: 2em
-  font-weight: bold
-  color: var(--color-default)
-  line-height: line-height-title
-  transition: color 0.2s
-
-  a&:hover
-    color: var(--color-link)
-
 .article-entry
   @extend $base-style
   clearfix()
+  overflow: hidden
   color: var(--color-default)
   padding: 0 article-padding + 15px
 
@@ -79,26 +66,41 @@ $article-meta-tag
 
   p, table
     line-height: line-height
-    margin: line-height 0
+    margin: (line-height/3*2) 0
 
   h1, h2, h3, h4, h5, h6
     font-weight: bold
     line-height: line-height-title
-    margin: line-height-title 0
+    margin: line-height-title 0 (line-height-title/3*2)
 
-    &:before
-      font-family: font-icon
-      font-weight: normal
+    if hexo-config("icon_font")
+      &:before
+        font-family: font-icon
+        font-weight: normal
 
-    a
-      font-family: font-icon
-      opacity: 0.5
-      margin-right: 5px
-      transition: 0.3s
+      a
+        font-family: font-icon
+        opacity: 0.5
+        margin-right: 5px
+        transition: 0.3s
 
-      &:hover
-        opacity: 1
-        text-decoration: none !important
+        &:hover 
+          opacity: 0.8
+          text-decoration: none !important
+    else
+      &:before
+        font-family: var(--font-icon)
+        font-weight: normal
+
+      a
+        font-family: var(--font-icon)
+        opacity: 0.5
+        margin-right: 5px
+        transition: 0.3s
+
+        &:hover
+          opacity: 0.8
+          text-decoration: none !important
 
   h2
     margin-bottom: 40px
@@ -106,13 +108,40 @@ $article-meta-tag
   a
     color: var(--color-link)
     text-decoration: none
+    word-break: break-word
 
     &:hover
       text-decoration: underline
 
+  a:not(:has(code),h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.post-link-card a,.friend-item-wrap a,a.article-gallery-item)::after
+    if hexo-config("icon_font")
+        font-family: font-icon
+        content: "\e639"
+    else
+      font-family: var(--font-icon)
+      content: "\f0c1"
+
+    font-size: 0.5em
+    margin: 0 0.5em
+    vertical-align: bottom
+    font-style: normal
+
+  a:not(h1 a,h2 a,h3 a,h4 a,h5 a,h6 a) code::after 
+    if hexo-config("icon_font")
+        font-family: font-icon
+        content: "\e639"
+    else
+      font-family: var(--font-icon)
+      content: "\f0c1"
+
+    font-size: 0.5em
+    margin: 0 0.5em
+    vertical-align: bottom
+    font-style: normal
+
   ul, ol, dl
-    margin-top: line-height
-    margin-bottom: line-height
+    margin-top: (line-height/3*2)
+    margin-bottom: (line-height/3*2)
 
   li
     &:hover
@@ -120,13 +149,15 @@ $article-meta-tag
         transition: color 0.2s
         color: var(--red-1)
 
+  img
+    opacity: 0
+    transition: 0.3s
+
   img, video
     max-width: 100%
     height: auto
     display: block
     margin: auto
-    opacity: 0
-    transition: 0.3s
 
   img.lazyloaded
     opacity: 1
@@ -152,10 +183,14 @@ $article-meta-tag
   blockquote
     background: var(--red-5-5)
     border-left: 6px var(--red-4) solid
-    margin: line-height 0
+    margin: (line-height/3*2) 0
     border-radius: post-radius
     transition: 0.3s
     padding: 1px 10px
+    box-shadow: 0 0 5px 2px var(--color-meta-shadow)
+
+    &:hover
+      box-shadow: 0 0 6px 4px var(--color-meta-shadow)
 
     footer
       font-size: font-size
@@ -165,7 +200,42 @@ $article-meta-tag
         &:before
           content: "—"
           padding: 0 0.5em
+  
+  details
+    padding: 18px 12px
+    border-radius: post-radius
+    background-color: var(--red-5-5);
+    box-shadow: 0 0 5px 2px var(--color-meta-shadow)
+    transition: 0.3s
 
+    &:hover
+      box-shadow: 0 0 6px 4px var(--color-meta-shadow)
+
+  summary
+    font-size: 1.1em
+    font-weight: bold
+    cursor: var(--cursor-pointer) !important
+    padding: 8px
+    border: none
+    border-radius: 10px
+    transition: 0.3s
+
+  summary:hover
+    background-color: var(--red-5)
+
+  details[open] summary
+    background-color: var(--red-5)
+
+  details[open] summary:hover
+    background-color: var(--red-5)
+
+  details p
+    margin: 20px 0 0
+    padding: 10px
+    background-color: var(--color-footer-background)
+    border-radius: 10px
+    transition: 0.3s
+  
   .pullquote
     text-align: left
     width: 45%
@@ -207,11 +277,11 @@ $article-meta-tag
   display: inline-block
   line-height: 1em
   padding: 10px 18px
-  border-radius: 20px
+  border-radius: post-radius
   background: var(--red-5)
   color: var(--red-1)
   text-decoration: none
-  box-shadow: 0 0 5px 3px var(--color-meta-shadow)
+  box-shadow: 0 0 5px 2px var(--color-meta-shadow)
   transition: 0.3s
 
   &:hover
@@ -224,16 +294,24 @@ $article-meta-tag
   font-size: 14px
   margin: 0 article-padding + 15px article-padding
 
+  @media mg-normal
+    margin: 0 article-padding article-padding
+
+  &:hover
+    &:before
+      opacity: 0.5
+
   &:before
     content: ""
     display: block
     margin-top: 10px
     opacity: 0.3
-    height: 2px
+    height: 4px
     background-image: linear-gradient(to right, var(--red-0) 50%, transparent 0%)
-    background-size: 25px 2px
+    background-size: 50px 4px
     background-repeat: repeat-x
-    filter: drop-shadow(0px 0px 2px red)
+    filter: drop-shadow(0px 0px 2px var(--red-1))
+    transition: .3s
 
   a
     text-decoration: none
@@ -249,10 +327,11 @@ $article-meta-tag
   text-decoration: none
   text-transform: uppercase
   background: var(--red-5)
-  border-radius: 20px
-  padding: 10px 18px
+  border-radius: post-radius
+  padding: 8px 15px
   margin-top: article-padding
   margin-right: 10px
+  box-shadow: 0 0 5px 2px var(--color-meta-shadow)
 
 .article-tag-list-link
   &:before
@@ -262,8 +341,8 @@ $article-meta-tag
   float: right
   background: var(--red-5)
   margin-left: 20px
-  border-radius: 20px
-  padding: 10px 18px
+  border-radius: post-radius
+  padding: 8px 15px
 
   &:before
     margin-right: 10px
@@ -272,11 +351,11 @@ $article-meta-tag
   float: right
   font-size: 14px
   background: var(--red-5)
-  border-radius: 20px
-  padding: 10px 18px
+  margin-left: article-padding
+  border-radius: post-radius
+  padding: 8px 15px
 
 #article-nav
-  clearfix()
   margin-top: 10px
   display: flex
   flex-direction: column
@@ -286,7 +365,7 @@ $article-meta-tag
     flex-direction: row
 
 .article-nav-link-wrap
-  color: white
+  color: #fff
   position: relative
   flex: 1
   display: flex
@@ -327,14 +406,13 @@ $article-meta-tag
 .article-nav-caption
   text-transform: uppercase
   letter-spacing: 2px
-  line-height: 0.85em
   font-weight: bold
 
 .article-nav-title
   font-size: 1.2em
   line-height: line-height
   margin-top: 0.8em
-  text-shadow: 0 0.2rem 0.3rem rgba(0,0,0,.5);
+  text-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, .5);
 
 .article-gallery
   background: #000
@@ -360,7 +438,39 @@ $article-meta-tag
     max-width: 100%
     margin: 0 auto
 
-.katex-display
-  overflow-x: auto
-  overflow-y: hidden
+if hexo-config("math.enable") and hexo-config("math.katex.enable")
+  .katex-display
+    overflow-x: auto
+    overflow-y: hidden
+    
+    &::-webkit-scrollbar
+      display: none
 
+  .katex
+    width: calc(100% - 2px)
+
+  .katex-html
+    padding: 3px
+    .base
+      margin: 0 auto
+
+  .katex-html:has(span.tag)
+    display: flex !important
+
+
+  .katex-display>.katex>.katex-html>.tag
+    position: relative !important
+    float: right
+    margin-left: 0.25rem
+
+if hexo-config("math.enable") and hexo-config("math.mathjax.enable")
+  mjx-container
+    display: inline-grid
+    overflow-x: auto
+    overflow-y: hidden
+    max-width: 100%
+    min-width: auto !important
+    &::-webkit-scrollbar
+      display: none
+    
+  

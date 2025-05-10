@@ -1,6 +1,6 @@
 window.addEventListener("pjax:success", () => {
   _$$("script[data-pjax]").forEach((element) => {
-    const { textContent, parentNode, id, className, type, src, dataset } =
+    const { textContent, parentNode, id, className, type, src, dataset, onload, integrity, crossOrigin } =
       element;
     const code = textContent || "";
     const script = document.createElement("script");
@@ -9,6 +9,9 @@ window.addEventListener("pjax:success", () => {
     className && (script.className = className);
     type && (script.type = type);
     dataset.pjax !== undefined && (script.dataset.pjax = "");
+    onload && (script.onload = onload);
+    integrity && (script.integrity = integrity);
+    crossOrigin && (script.crossOrigin = crossOrigin);
 
     if (src) {
       script.src = src;
@@ -36,5 +39,6 @@ window.addEventListener("pjax:complete", () => {
 window.addEventListener("pjax:send", () => {
   window.lightboxStatus = "loading";
 });
-if (startLoading) window.addEventListener("pjax:send", startLoading);
-if (endLoading) window.addEventListener("pjax:complete", endLoading);
+if (window.startLoading) window.addEventListener("pjax:send", startLoading);
+if (window.endLoading) window.addEventListener("pjax:complete", endLoading);
+if (window.aosInit) window.addEventListener("pjax:success", aosInit);
