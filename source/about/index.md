@@ -25,8 +25,3 @@
 
 
 我不会经常写文章，只会在觉得需要写，想输出的情况下再写。我觉得这样至少可以保证我所写的每篇文章都是有感而发，而不是为了完成某个“任务”而去写作。
-
-***附一张我的帅照***
-
-[![handsome-Man.jpg](https://i.postimg.cc/pThRNFyh/handsome-Man.jpg)](https://postimg.cc/jwbGPCHt)
-

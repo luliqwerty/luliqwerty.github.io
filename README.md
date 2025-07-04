@@ -1,2 +1,2 @@
-hexo + reimu + github pages 搭建的个人博客
-[我的博客网站](https://www.hdq66.site)
+hexo + reimu + github pages personal blog
+[My blog website](https://www.hdq66.site)
