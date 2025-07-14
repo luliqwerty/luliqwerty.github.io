@@ -347,11 +347,11 @@ gitalk:
   md5: false
 # https://giscus.app/zh-CN
 giscus:
-  enable: false
-  repo:
-  repoId:
-  category:
-  categoryId:
+  enable: true
+  repo: luliqwerty/luliqwerty.github.io
+  repoId: R_kgDOMpR6LQ
+  category: Announcements
+  categoryId: DIC_kwDOMpR6Lc4Clmio
   mapping: mapping
   strict: 0
   reactionsEnabled: 1
