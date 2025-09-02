@@ -529,8 +529,8 @@ article_copyright:
     author: true
     link: true
     title: false
-    date: false
-    updated: false
+    date: true
+    updated: true
     license: true
     license_type: by-nc-sa # https://creativecommons.org/licenses
 
